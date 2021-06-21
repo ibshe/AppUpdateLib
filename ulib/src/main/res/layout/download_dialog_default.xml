@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/update_dialog_rootview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_gravity="center"
+    android:background="@drawable/update_bg_10"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="260dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            tools:text="@string/update_lib_file_download_text"
+            android:visibility="visible"
+            android:textColor="@color/text_black"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            >
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/progressbar_bg"
+                android:padding="5dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/content"
+            android:background="@color/line_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/line">
+
+            <TextView
+                android:id="@+id/negtive"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                tools:text="@string/update_lib_stop_download"
+                android:textColor="@color/text_blue"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/column_line"
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/line_gray" />
+
+            <TextView
+                android:id="@+id/positive"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                tools:text="@string/update_lib_background_download_tv"
+                android:textColor="@color/text_blue"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

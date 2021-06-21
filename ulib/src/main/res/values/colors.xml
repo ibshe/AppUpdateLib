@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="update_lib_bg">#f3f3f3</color>
+    <color name="trans_bg">#00f3f3f3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="lineGray">#e4e3e3</color>
+    <color name="text_black">#2d2d2d</color>
+    <color name="progress_blue_1">#82b2d4</color>
+    <color name="progress_blue_2">#0e98fc</color>
+    <color name="text_blue">#0782DA</color>
+    <color name="line_gray">#bebebe</color>
+
+
+</resources>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">自动更新</string>
+    <string name="update_lib_network_not_available">当前网络不可用</string>
+    <string name="update_lib_default_toast">当前已是最新版本</string>
+
+    <!--DownLoadDialog-->
+    <string name="update_lib_download_cancel">已取消更新</string>
+    <string name="update_lib_download_in_background">正在后台进行更新</string>
+    <string name="update_lib_download_finish">下载完成</string>
+    <string name="update_lib_download_failed">下载失败</string>
+    <string name="update_lib_file_download_format">正在下载（%1$s/%2$s）</string>
+    <string name="update_download_did_not_start">下载没有开始</string>
+    <string name="update_not_initialized_yet">没有初始化</string>
+
+    <!--UpdateDialog-->
+    <string name="update_lib_update_content">1、优化排版布局\n2、增加功能&#65306;</string>
+    <string name="update_lib_version_code">版本号&#65306;</string>
+    <string name="update_lib_update">升级</string>
+    <string name="update_lib_cancel">取消</string>
+    <string name="update_no_thanks">不了，谢谢</string>
+    <string name="update_sure">好的</string>
+    <string name="update_lib_dialog_title">发现新版本</string>
+
+    <!--DownLoadService-->
+    <string name="update_lib_file_download">文件下载</string>
+    <string name="update_lib_file_downloading">正在下载中&#8230;</string>
+
+    <!--fragment_download.xml-->
+    <string name="update_lib_file_download_text">更新中</string>
+    <string name="update_lib_stop_download">停止下载</string>
+    <string name="update_lib_background_download_tv">后台下载</string>
+    <string name="update_lib_background_download">切换至后台下载</string>
+
+</resources>
