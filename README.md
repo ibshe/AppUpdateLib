@@ -1,8 +1,8 @@
 # AppUpdateLib
 
 
-    Appupdatelib is a simple application update framework similar to IOS style. It can be used to 
-    customize update and download dialog styles, as well as customized dialog or custom toast
+    Appupdatelib is a simple application update framework similar to IOS style. It can be used to customize 
+    update and download dialog styles, as well as customized dialog or custom toast
 [中文README](https://gitee.com/zkzyjs/AppUpdateLib/blob/master/README.md) 
 
 [博客](https://blog.csdn.net/m0_37824232/article/details/118102122) 
