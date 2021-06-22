@@ -49,7 +49,7 @@
         android:background="@drawable/button_bg"/>
 
     <Button
-        android:id="@+id/custom_download"
+        android:id="@+id/start_download_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
@@ -80,7 +80,16 @@
         android:text="自定义更新弹框"
         android:textColor="@color/white"
         android:background="@drawable/button_bg"/>
-
+    <Button
+        android:id="@+id/custom_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:text="自定义下载样式"
+        android:textColor="@color/white"
+        android:background="@drawable/button_bg"/>
     <Button
         android:id="@+id/custom_download_progress"
         android:layout_width="match_parent"

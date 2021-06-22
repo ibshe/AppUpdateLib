@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
@@ -47,15 +49,16 @@ public class DownloadDialog implements IDownload {
     private final static int DONE = 1001;
     private final static int ERROR = 1002;
     private Context mContext;
-    private BsDialog bsDialog;
-    private TextView titleTv,negtive,positive;
-    private ProgressBar mProgressbar;
+    protected BsDialog bsDialog;
+    protected TextView titleTv,negtive,positive;
+    protected View line1,line2;
+    protected ProgressBar mProgressbar;
     private DownLoadService mDownLoadService;
     private String mUrl;
     private NotificationManager mManager;
     private Notification.Builder mBuilder;
     private Notification mNotification;
-    private boolean userCancel = false;
+    protected boolean userCancel = false;
     private int mNotificationIcon = R.drawable.ic_launcher;
     private UpdateWrapper.UpdateCallback mCallback;
     private Class<?> mClazz;
@@ -63,9 +66,10 @@ public class DownloadDialog implements IDownload {
     private int currentProgress;
     private boolean hasBindingService = false;
     private int lastProgress = 0;
-    private RadiusEnum mRadius = RadiusEnum.UPDATE_RADIUS_10;
+    private View rootView;
+    protected RadiusEnum mRadius = RadiusEnum.UPDATE_RADIUS_10;
     protected DownlaodCallback mDownlaodCallback;
-    private DownloadDialog(){
+    protected DownloadDialog(){
     }
 
     public void start(){
@@ -73,18 +77,20 @@ public class DownloadDialog implements IDownload {
         mContext.bindService(mIntent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
-    private void showView(final int progress){
+    protected void showView(final int progress){
         bsDialog = new BsDialog(mContext, R.layout.download_dialog_default) {
             @Override
             public void onBindViewHolder(DialogViewHolder holder) {
-                View view = holder.getConvertView();
+                rootView = holder.getConvertView();
                 userCancel = false;
-                titleTv = view.findViewById(R.id.title);
-                mProgressbar = view.findViewById(R.id.progressbar);
-                negtive = view.findViewById(R.id.negtive);
-                positive = view.findViewById(R.id.positive);
+                titleTv = rootView.findViewById(R.id.title);
+                mProgressbar = rootView.findViewById(R.id.progressbar);
+                negtive = rootView.findViewById(R.id.negtive);
+                positive = rootView.findViewById(R.id.positive);
+                line1 = rootView.findViewById(R.id.download_line1);
+                line2 = rootView.findViewById(R.id.download_line2);
                 if(mRadius.getType() != 10){
-                    view.setBackground(mContext.getResources().getDrawable(ScreenUtils.getDrawableId(mRadius.getType())));
+                    rootView.setBackground(mContext.getResources().getDrawable(ScreenUtils.getDrawableId(mRadius.getType())));
                 }
                 titleTv.setText(mContext.getString(R.string.update_lib_file_downloading));
                 mProgressbar.setProgress(progress);
@@ -220,6 +226,11 @@ public class DownloadDialog implements IDownload {
             return this;
         }
 
+        public Builder radius(BsDialog bsDialog) {
+            downloadDialog.bsDialog = bsDialog;
+            return this;
+        }
+
         public DownloadDialog build(){
             downloadDialog.showView(downloadDialog.currentProgress);
             return downloadDialog;
@@ -262,6 +273,13 @@ public class DownloadDialog implements IDownload {
         return this;
     }
 
+    public DownloadDialog setDialogStyle(@DrawableRes int style){
+        if(rootView!=null){
+            rootView.setBackgroundResource(style);
+        }
+        return this;
+    }
+
     public DownloadDialog setTitle(String var1){
         if(TextUtils.isEmpty(var1)){
             return this;
@@ -279,16 +297,32 @@ public class DownloadDialog implements IDownload {
         return this;
     }
 
-    public DownloadDialog setCancelTextColor(int var1){
-        if(negtive!=null){
-            negtive.setTextColor(var1);
+    public DownloadDialog setTitleColor(@ColorRes int var1){
+        if(titleTv!=null){
+            titleTv.setTextColor(mContext.getResources().getColor(var1));
         }
         return this;
     }
 
-    public DownloadDialog setConfirmTextColor(int var1){
+    public DownloadDialog setLineColor(@ColorRes int var1){
+        if(line1!=null){
+            line1.setBackgroundColor(mContext.getResources().getColor(var1));
+        }
+        if(line2!=null){
+            line2.setBackgroundColor(mContext.getResources().getColor(var1));
+        }
+        return this;
+    }
+    public DownloadDialog setCancelColor(@ColorRes int var1){
+        if(negtive!=null){
+            negtive.setTextColor(mContext.getResources().getColor(var1));
+        }
+        return this;
+    }
+
+    public DownloadDialog setConfirmColor(@ColorRes int var1){
         if(positive!=null){
-            positive.setTextColor(var1);
+            positive.setTextColor(mContext.getResources().getColor(var1));
         }
         return this;
     }
@@ -424,7 +458,7 @@ public class DownloadDialog implements IDownload {
         }
     };
 
-    private void statusCallback(int code,String msg,boolean debug){
+    public void statusCallback(int code, String msg, boolean debug){
         if(mDownlaodCallback != null) {
             mDownlaodCallback.callback(code,msg);
         }else {
@@ -436,4 +470,5 @@ public class DownloadDialog implements IDownload {
             UpdateLog.e(TAG,msg+" code:"+code);
         }
     }
+
 }

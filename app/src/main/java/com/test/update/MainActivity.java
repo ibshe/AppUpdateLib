@@ -2,6 +2,7 @@ package com.test.update;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import com.boge.update.DownloadWrapper;
 import com.boge.update.UpdateWrapper;
+import com.boge.update.base.BsDialog;
 import com.boge.update.common.RadiusEnum;
 import com.boge.update.common.BaseConfig;
 import com.boge.update.entity.VersionModel;
@@ -23,6 +25,7 @@ import org.json.JSONException;
 /**
  * 1、更新内容带#自动换行
  * 2、设置DownlaodCallback回调后，toast不展示；如需展示默认的toast，不设置DownlaodCallback即可
+ * 3、更新dialog与下载dialog完全解耦，方便自定义
  * @Author ibshen@aliyun.com
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.custom_update).setOnClickListener(this);
         findViewById(R.id.silence_download).setOnClickListener(this);
         findViewById(R.id.start_download).setOnClickListener(this);
+        findViewById(R.id.start_download_2).setOnClickListener(this);
         findViewById(R.id.custom_download_progress).setOnClickListener(this);
         findViewById(R.id.custom_download).setOnClickListener(this);
         mModel = parse(mJson);
@@ -92,13 +96,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.update_local_json:
                 new UpdateWrapper.Builder(this,null)
                         .model(mModel)//本地更新传实体，本地实体url优先级 > url
-                        .radius(RadiusEnum.UPDATE_RADIUS_10)
+                        .radius(RadiusEnum.UPDATE_RADIUS_30)
                         .checkEveryday(false)
                         .downloadCallback(null)//是否回调下载状态，默认null且使用系统toast提示
                         .build()
                         .start();
                 break;
-            case R.id.must_update:
+            case R.id.must_update://强制更新时默认后台下载
                 new UpdateWrapper.Builder(this,mJsonUrl)
                         .isMustUpdate(true)
                         .radius(RadiusEnum.UPDATE_RADIUS_10)
@@ -109,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new UpdateWrapper.Builder(this,mJsonUrl)
                         .customDialog(new CustomDialog(this,"张三","李四","王五",R.layout.custom_update_dialog))
                         .checkEveryday(false)
-                        .radius(RadiusEnum.UPDATE_RADIUS_30)
                         .build()
                         .start();
                 break;
@@ -121,10 +124,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new DownloadWrapper(this,mDownloadUrl,false,RadiusEnum.UPDATE_RADIUS_10)
                         .start();
                 break;
-            case R.id.custom_download:
+            case R.id.start_download_2:
                 new DownloadDialog.Builder(this,mDownloadUrl,false)
                         .radius(RadiusEnum.UPDATE_RADIUS_10)
                         .build().start();
+                break;
+            case R.id.custom_download:
+                new DownloadDialog.Builder(this,mDownloadUrl,false)
+                        .downloadCallback(new DownlaodCallback() {
+                            @Override
+                            public void callback(int code, String message) {
+                            }
+                        })
+                        .build()
+                        .setDialogStyle(R.drawable.update_bg_dark)
+                        .setCancelColor(R.color.orange)
+                        .setConfirmColor(R.color.dark_tx)
+                        .setTitleColor(R.color.dark_tx)
+                        .setLineColor(R.color.lineGray)
+                        .setProgressStyle(getResources().getDrawable(R.drawable.custom_progressbar_bg))
+                        .start();
                 break;
             case R.id.custom_download_progress:
                 new DownloadDialog.Builder(this,mDownloadUrl,false)
@@ -133,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             public void callback(int code, String message) {
                             }
                         })
-                        .progress(85).build();
+                        .build().setProgress(85);
                 break;
         }
     }
@@ -150,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void bindingVh(DialogViewHolder holder) {
                     View view = holder.getConvertView();
-                    view.setBackgroundResource(ScreenUtils.getDrawableId(RadiusEnum.UPDATE_RADIUS_30.getType()));
+                    //view.setBackgroundResource(ScreenUtils.getDrawableId(RadiusEnum.UPDATE_RADIUS_30.getType()));
                     titleTv = view.findViewById(R.id.title);
                     contentTv = view.findViewById(R.id.message);
                     negtive = view.findViewById(R.id.negtive);
@@ -168,7 +187,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     positive.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            start();
+                            //start();调用系统默认下载dialog
+                            new DownloadDialog.Builder(MainActivity.this,mDownloadUrl,false)
+                                    .downloadCallback(new DownlaodCallback() {
+                                        @Override
+                                        public void callback(int code, String message) {
+                                        }
+                                    })
+                                    .build()
+                                    .setDialogStyle(R.drawable.update_bg_dark)
+                                    .setCancelColor(R.color.orange)
+                                    .setConfirmColor(R.color.dark_tx)
+                                    .setTitleColor(R.color.dark_tx)
+                                    .setLineColor(R.color.lineGray)
+                                    .setProgressStyle(getResources().getDrawable(R.drawable.custom_progressbar_bg))
+                                    .start();
                         }
                     });
                 }
@@ -184,4 +217,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return null;
     }
+
 }
