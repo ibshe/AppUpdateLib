@@ -9,7 +9,7 @@
 
 ### renderings
     
-![ib](http://103.45.138.168/apps/Screenshot1.jpg) 
+![ib](http://103.45.138.168/apps/screenshot2.jpg) 
 
 ## Usage
 
