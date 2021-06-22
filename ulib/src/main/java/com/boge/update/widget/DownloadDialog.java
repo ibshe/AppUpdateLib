@@ -49,16 +49,16 @@ public class DownloadDialog implements IDownload {
     private final static int DONE = 1001;
     private final static int ERROR = 1002;
     private Context mContext;
-    protected BsDialog bsDialog;
-    protected TextView titleTv,negtive,positive;
-    protected View line1,line2;
-    protected ProgressBar mProgressbar;
+    private BsDialog bsDialog;
+    private TextView titleTv,negtive,positive;
+    private View line1,line2;
+    private ProgressBar mProgressbar;
     private DownLoadService mDownLoadService;
     private String mUrl;
     private NotificationManager mManager;
     private Notification.Builder mBuilder;
     private Notification mNotification;
-    protected boolean userCancel = false;
+    private boolean userCancel = false;
     private int mNotificationIcon = R.drawable.ic_launcher;
     private UpdateWrapper.UpdateCallback mCallback;
     private Class<?> mClazz;
@@ -67,8 +67,8 @@ public class DownloadDialog implements IDownload {
     private boolean hasBindingService = false;
     private int lastProgress = 0;
     private View rootView;
-    protected RadiusEnum mRadius = RadiusEnum.UPDATE_RADIUS_10;
-    protected DownlaodCallback mDownlaodCallback;
+    private RadiusEnum mRadius = RadiusEnum.UPDATE_RADIUS_10;
+    private DownlaodCallback mDownlaodCallback;
     protected DownloadDialog(){
     }
 

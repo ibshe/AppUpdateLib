@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .isPost(false)//检查更新请求协议是否为POST，默认GET
                         .isMustUpdate(false)//是否强制更新
                         .backgroundDownload(false)//是否后台下载
-                        .model(null)//非本地实体，不传默认为null
+                        .model(null)//本地实体，不传默认为null
                         .downloadCallback(new DownlaodCallback() {//下载状态回调
                             @Override
                             public void callback(int code, String message) {
@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     .setLineColor(R.color.lineGray)
                                     .setProgressStyle(getResources().getDrawable(R.drawable.custom_progressbar_bg))
                                     .start();
+                            cancel();
                         }
                     });
                 }
