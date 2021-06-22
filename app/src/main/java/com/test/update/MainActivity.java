@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new UpdateWrapper.Builder(this,mJsonUrl)
                         .title("测试更新")//更新dialog标题
                         .negtiveText("取消")//更新dialog取消按钮
-                        .radius(RadiusEnum.UPDATE_RADIUS_10)//更新和下载圆角弧度
+                        .radius(RadiusEnum.UPDATE_RADIUS_10)//更新和下载圆角弧度同时生效
                         .positiveText("立即升级")//更新dialog确定按钮
                         .checkEveryday(false)//默认false 立即下载,true 每天最多检查一次。如今日已检查，则不再检查
                         .showNetworkErrorToast(true)//无网络提示

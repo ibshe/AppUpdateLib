@@ -10,9 +10,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -36,7 +34,7 @@ android {
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         classpath += configurations.compile
     }
-    
+
     task javadocJar(type: Jar, dependsOn: javadoc) {
         classifier = 'javadoc'
         from javadoc.destinationDir

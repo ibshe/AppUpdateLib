@@ -91,4 +91,5 @@
         android:text="设置下载进度"
         android:textColor="@color/white"
         android:background="@drawable/button_bg"/>
+
 </LinearLayout>
