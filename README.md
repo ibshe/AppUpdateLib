@@ -1,7 +1,7 @@
 # AppUpdateLib
 
-    轻量、易用、可定制的android更新和dialog库，ui跟xml自定义，默认ios极简风格，一行代码(不超过60字符)实现更新提示和下载安装。
-    还有静默下载，支持本地json和直接读取服务端json，一个builder定制化各种dialog，个性化toast。
+    轻量、易用、可定制的android更新和dialog库，ui跟xml自定义，默认ios极简风格，一行代码(不超过60字符)实现更新提示和
+    下载安装。支持静默更新，强制更新，支持本地json和直接读取服务端json，一个builder定制化各种dialog，个性化toast。
     Appupdatelib is a simple application update framework similar to IOS style. It can be used to customize 
     update and download dialog styles, as well as customized dialog or custom toast
 [中文README](https://gitee.com/zkzyjs/AppUpdateLib/blob/master/README.md) 
