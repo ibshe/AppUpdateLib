@@ -31,7 +31,7 @@ repositories {
 
 dependencies {
     ...
-    implementation 'com.github.ibshe:AppUpdateLib:1.0.6' // for support lib
+    implementation 'com.github.ibshe:AppUpdateLib:1.0.7' // for support lib
 }
 ```
 
