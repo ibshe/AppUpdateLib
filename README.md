@@ -44,7 +44,7 @@ dependencies {
 
 dependencies {
     ...
-    implementation 'com.github.ibshe:AppUpdateLibX:1.0.7' // for support lib
+    implementation 'com.github.ibshe:AppUpdateLibX:1.0.7' // for androidX lib
 }
 ```
 
