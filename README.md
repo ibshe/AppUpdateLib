@@ -59,7 +59,7 @@ new UpdateWrapper.Builder(this,mJsonUrl).build().start();
 
 ```Java
 new UpdateWrapper.Builder(this,null)
-                        .model(new VersionModel())//本地实体,优先级 > url
+                        .model(new VersionModel())//Local entity, priority > URL
                         .build()
                         .start();
 ```
