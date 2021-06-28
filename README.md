@@ -1,5 +1,5 @@
 # AppUpdateLib
-Support Android x
+
 
     轻量、易用、可定制的android更新和dialog库，支持androidX。xml自定义ui，默认ios极简风格，一行代码(不超过60字符)实现更新提示和
     下载安装。支持静默更新，强制更新，支持本地json和直接读取服务端json，一个builder定制化各种dialog，个性化toast。
@@ -9,7 +9,7 @@ Support Android x
 
 [博客](https://blog.csdn.net/m0_37824232/article/details/118102122) 
 
-[androidX 版本](https://github.com/ibshe/AppUpdateLibX) 
+[androidX 版本(version)](https://github.com/ibshe/AppUpdateLibX) 
 
 ### renderings
     
