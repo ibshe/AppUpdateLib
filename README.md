@@ -55,6 +55,15 @@ dependencies {
 new UpdateWrapper.Builder(this,mJsonUrl).build().start();
 ```
 
+* Or enter entity
+
+```Java
+new UpdateWrapper.Builder(this,null)
+                        .model(new VersionModel())//本地实体,优先级 > url
+                        .build()
+                        .start();
+```
+
 * main parameter
 
 ```Java
