@@ -10,6 +10,7 @@ Support Android x
 [博客](https://blog.csdn.net/m0_37824232/article/details/118102122) 
 
 [androidX 版本](https://github.com/ibshe/AppUpdateLibX) 
+
 ### renderings
     
 ![ib](http://103.45.138.168/apps/screenshot2.jpg) 
