@@ -176,6 +176,11 @@ new UpdateWrapper.Builder(this,mJsonUrl)
 }
 ```
 
+* Code obfuscation
+
+```Html
+-keep class com.boge.update.** {*;}
+```
 
 ### Thank you for the tool class provided by chongheng.wang and caik
 
