@@ -17,8 +17,8 @@
 
 ## Usage
 
-### 1. checkout out MagicIndicator, which contains source code and demo
-### 2. import module magicindicator and add dependency:
+### 1. checkout out AppUpdateLibX, which contains source code and demo
+### 2. import module AppUpdateLibX and add dependency:
     
 ```Java
 implementation project(':ulib')
@@ -48,7 +48,7 @@ dependencies {
 }
 ```
 
-### 3. Use in your activiti or fragment
+### 3. Use in your activity or fragment
 * One line of code for application update
 
 ```Java
